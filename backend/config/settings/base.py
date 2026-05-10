@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = config("SECRET_KEY", default="insecure-dev-key-change-in-production")
 DEBUG = config("DEBUG", default=True, cast=bool)
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost,127.0.0.1").split(",")
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost,127.0.0.1,.vercel.app").split(",")
 
 # Application definition
 DJANGO_APPS = [
@@ -172,7 +172,7 @@ CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TIMEZONE = "Asia/Kolkata"
 
 # ─── RAG ──────────────────────────────────────────────────────────────────────
-RAG_CONTEXT_PATH = BASE_DIR.parent / "knowledge_base" / "legal_context.json"
+RAG_CONTEXT_PATH = BASE_DIR / "knowledge_base" / "legal_context.json"
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
 LOGGING = {
