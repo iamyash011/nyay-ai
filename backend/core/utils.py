@@ -2,7 +2,7 @@
 import json
 import logging
 from pathlib import Path
-
+from django.conf import settings
 from rest_framework.views import exception_handler
 from rest_framework.response import Response
 
@@ -16,7 +16,11 @@ def get_legal_context() -> dict:
     """Load the legal_context.json knowledge base (cached after first load)."""
     global _legal_context
     if _legal_context is None:
-        kb_path = Path(__file__).resolve().parents[2] / "knowledge_base" / "legal_context.json"
+        kb_path = getattr(settings, "RAG_CONTEXT_PATH", None)
+        if not kb_path:
+            # Fallback for non-django environments if needed
+            kb_path = Path(__file__).resolve().parents[1] / "knowledge_base" / "legal_context.json"
+            
         with open(kb_path, "r", encoding="utf-8") as f:
             _legal_context = json.load(f)
         logger.info("Legal context loaded from %s", kb_path)
