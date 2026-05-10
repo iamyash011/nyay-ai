@@ -144,7 +144,7 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 CORS_ALLOW_CREDENTIALS = True
 
 # ─── LLM Configuration ────────────────────────────────────────────────────────
-LLM_PROVIDER = config("LLM_PROVIDER", default="openai")
+LLM_PROVIDER = config("LLM_PROVIDER", default="groq").lower()
 
 # ─── OpenAI ───────────────────────────────────────────────────────────────────
 OPENAI_API_KEY = config("OPENAI_API_KEY", default="")
