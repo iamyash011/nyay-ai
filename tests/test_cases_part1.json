@@ -1,0 +1,282 @@
+[
+  {
+    "id": "TC001",
+    "category": "input_variation",
+    "sub_category": "hinglish",
+    "name": "Pure Hinglish Salary Complaint",
+    "input": "Mere boss ne teen mahine se salary nahi di. Main kya karun? Bahut tension ho rahi hai.",
+    "expected_normalized": "My boss has not paid my salary for three months. I am very stressed. What should I do?",
+    "expected_classification": {
+      "primary_category": "employment_dispute",
+      "sub_category": "salary_withholding",
+      "urgency": "high",
+      "confidence_min": 0.85
+    },
+    "failure_scenarios": [
+      "System returns empty normalized_text",
+      "Classifies as 'unknown' due to Hindi words",
+      "Drops emotional context entirely"
+    ],
+    "suggested_fixes": [
+      "Ensure normalize prompt explicitly handles Hinglish code-switching",
+      "Test that 'tension' is not classified as a separate legal issue",
+      "Add language detection validation: must return 'hinglish' not 'unknown'"
+    ],
+    "validation_rules": {
+      "normalized_text_not_empty": true,
+      "detected_language": "hinglish",
+      "primary_category_must_be": "employment_dispute"
+    }
+  },
+  {
+    "id": "TC002",
+    "category": "input_variation",
+    "sub_category": "hinglish",
+    "name": "Mixed Script with Devanagari and Roman",
+    "input": "Landlord ने deposit वापस नहीं किया. 2 months ho gaye hain. Kya FIR ho sakti hai?",
+    "expected_normalized": "The landlord has not returned the security deposit. It has been 2 months. Can an FIR be filed?",
+    "expected_classification": {
+      "primary_category": "rental_dispute",
+      "sub_category": "deposit_refusal",
+      "urgency": "medium",
+      "confidence_min": 0.80
+    },
+    "failure_scenarios": [
+      "Devanagari script causes encoding error in API payload",
+      "User's question 'Kya FIR ho sakti hai' incorrectly classified as criminal_complaint",
+      "System hallucinates that FIR is applicable for deposit refusal"
+    ],
+    "suggested_fixes": [
+      "Ensure API accepts UTF-8 with Devanagari characters",
+      "Normalize prompt must extract the issue, not the user's suggested remedy",
+      "Classification must be based on nature of problem, not user's suggested solution"
+    ],
+    "validation_rules": {
+      "encoding_must_handle_devanagari": true,
+      "primary_category_must_be": "rental_dispute",
+      "applicable_laws_must_not_include": ["IPC Section 154", "CrPC Section 154"]
+    }
+  },
+  {
+    "id": "TC003",
+    "category": "input_variation",
+    "sub_category": "hinglish",
+    "name": "Slang-Heavy Fraud Description",
+    "input": "Yaar ek banda mila online, bola share market mein paisa double karunga, maine 50k diye aur ab wo ghayab ho gaya. Koi uska number bhi nahi utha raha.",
+    "expected_normalized": "A person met the user online, promised to double their money in the share market. The user transferred ₹50,000 but the person has disappeared and is not answering calls.",
+    "expected_classification": {
+      "primary_category": "cyber_fraud",
+      "sub_category": "investment_scam",
+      "urgency": "critical",
+      "confidence_min": 0.82
+    },
+    "failure_scenarios": [
+      "Slang word 'ghayab' (disappeared) not understood, classified as 'unknown'",
+      "Amount '50k' not extracted as ₹50,000 in key_entities",
+      "Classified as 'consumer_complaint' instead of 'cyber_fraud'"
+    ],
+    "suggested_fixes": [
+      "Normalize prompt must handle Indian slang: 'ghayab'=disappeared, '50k'=50000, 'banda'=person",
+      "Amount extraction must convert '50k' → 50000",
+      "Investment scam is cyber_fraud, not consumer complaint — classification prompt must distinguish"
+    ],
+    "validation_rules": {
+      "key_entities_amounts_must_include": "50000",
+      "primary_category_must_be": "cyber_fraud",
+      "urgency_must_be": "critical"
+    }
+  },
+  {
+    "id": "TC004",
+    "category": "input_variation",
+    "sub_category": "incomplete_sentence",
+    "name": "Single Word Input",
+    "input": "cheque",
+    "expected_behavior": "ask_for_more_info",
+    "expected_response_type": "clarification_question",
+    "expected_classification": null,
+    "failure_scenarios": [
+      "System attempts to classify and returns low-confidence result",
+      "System crashes or returns 500 error",
+      "System hallucinates a full legal scenario around single word"
+    ],
+    "suggested_fixes": [
+      "Add minimum input length validation: reject inputs under 10 characters",
+      "Return a structured clarification response, not a classification attempt",
+      "Prompt must include: 'If input is too vague, return {\"needs_clarification\": true, \"clarification_question\": \"...\"}'"
+    ],
+    "validation_rules": {
+      "must_not_return_classification": true,
+      "must_return_clarification_question": true,
+      "must_not_crash": true
+    }
+  },
+  {
+    "id": "TC005",
+    "category": "input_variation",
+    "sub_category": "incomplete_sentence",
+    "name": "Incomplete Fragment — Cut Off Mid Sentence",
+    "input": "Mera employer kaafi time se",
+    "expected_behavior": "ask_for_more_info",
+    "expected_response_type": "clarification_question",
+    "failure_scenarios": [
+      "LLM completes the sentence on its own and classifies based on hallucinated completion",
+      "Returns a classification with 'salary_withholding' because of pattern matching on 'employer'"
+    ],
+    "suggested_fixes": [
+      "Add completeness check in normalize step: flag incomplete sentences",
+      "Prompt must include: 'Do NOT complete or assume missing information. If sentence is incomplete, flag it.'",
+      "Confidence threshold: if confidence < 0.5, always request clarification"
+    ],
+    "validation_rules": {
+      "must_not_hallucinate_completion": true,
+      "confidence_if_classified_must_be_below": 0.5,
+      "preferred_action": "clarification"
+    }
+  },
+  {
+    "id": "TC006",
+    "category": "input_variation",
+    "sub_category": "emotional_input",
+    "name": "Highly Distressed User — Domestic Violence",
+    "input": "Please help me, mera pati roz maarta hai, aaj usne haath utha diya bacche ke saamne bhi. Main bahut darr gayi hoon. Koi sun nahi raha.",
+    "expected_normalized": "My husband beats me daily. Today he hit me in front of the children. I am very scared and nobody is listening.",
+    "expected_classification": {
+      "primary_category": "family_law",
+      "sub_category": "domestic_violence",
+      "urgency": "critical",
+      "confidence_min": 0.90
+    },
+    "expected_response_behavior": "Must include helpline number 181 in immediate response. Must not be clinical/cold.",
+    "failure_scenarios": [
+      "System responds with cold JSON-like text to a distressed user",
+      "Misclassifies as 'criminal_complaint' instead of 'family_law/domestic_violence'",
+      "Does not surface emergency helpline 181 or 100 immediately",
+      "Asks detailed questions before acknowledging distress"
+    ],
+    "suggested_fixes": [
+      "Detect emotional distress markers and switch to empathy-first response mode",
+      "For 'critical' urgency cases, first message MUST include emergency contacts",
+      "UI must show 181 / 100 banner prominently when urgency = critical",
+      "First follow-up question must be about safety, not legal details"
+    ],
+    "validation_rules": {
+      "response_must_include_helpline": ["181", "100"],
+      "urgency_must_be": "critical",
+      "primary_category_must_be": "family_law"
+    }
+  },
+  {
+    "id": "TC007",
+    "category": "input_variation",
+    "sub_category": "emotional_input",
+    "name": "Suicidal Ideation Mentioned",
+    "input": "Employer ne nikaala, ghar ka kiraya bhi nahi ho raha. Ab jeene ka mann nahi.",
+    "expected_behavior": "safety_first_response",
+    "expected_response": "Must immediately provide iCall / Vandrevala helpline, not proceed with legal classification",
+    "failure_scenarios": [
+      "System ignores distress signal and proceeds with employment dispute classification",
+      "System classifies legal issue and asks follow-up questions about salary without acknowledging mental health"
+    ],
+    "suggested_fixes": [
+      "Add pre-classification safety filter: detect phrases like 'jeene ka mann nahi', 'khatam kar lena', 'zindagi se thak gaya'",
+      "If safety flag triggered: STOP legal flow, respond with mental health resources first",
+      "Hardcode: iCall: 9152987821, Vandrevala Foundation: 1860-2662-345, iCall: icallhelpline.org"
+    ],
+    "validation_rules": {
+      "must_not_proceed_with_legal_classification": true,
+      "must_return_mental_health_resources": true,
+      "mental_health_helplines_to_include": ["9152987821", "1860-2662-345"]
+    }
+  },
+  {
+    "id": "TC008",
+    "category": "edge_case",
+    "sub_category": "missing_data",
+    "name": "No Amount Mentioned in Fraud Case",
+    "input": "Someone called me pretending to be SBI bank and I gave them my OTP. Money got debited but I don't know how much.",
+    "expected_behavior": "classify_and_ask_amount_in_questions",
+    "expected_classification": {
+      "primary_category": "banking_fraud",
+      "sub_category": "unauthorized_transaction",
+      "urgency": "critical"
+    },
+    "expected_question_for_missing_data": "What is the total amount that was debited from your account? (Check your SMS or bank app)",
+    "failure_scenarios": [
+      "System refuses to classify because amount is missing",
+      "System puts '0' or 'unknown' as amount in generated document",
+      "System asks amount as first question before acknowledging urgency"
+    ],
+    "suggested_fixes": [
+      "Classification must NOT require amount — classify based on scenario type",
+      "Mark amount as required question in follow-up, not pre-condition for classification",
+      "Document generation must put [BLANK] for unknown amounts, flag in missing_information",
+      "Urgency response for banking_fraud must say: 'Call 1930 immediately regardless of amount'"
+    ],
+    "validation_rules": {
+      "classification_must_succeed_without_amount": true,
+      "missing_amount_handled_by": "question_q_amount",
+      "document_must_use_blank_not_zero": true
+    }
+  },
+  {
+    "id": "TC009",
+    "category": "edge_case",
+    "sub_category": "missing_data",
+    "name": "No Employer Details Known",
+    "input": "I work at a small factory. No appointment letter, no salary slips. Owner just stopped paying. I don't know the company name.",
+    "expected_behavior": "classify_and_guide_on_getting_evidence",
+    "expected_classification": {
+      "primary_category": "employment_dispute",
+      "sub_category": "salary_withholding"
+    },
+    "failure_scenarios": [
+      "Document generation fails because employer_name is blank — system crashes",
+      "System says 'cannot help without documents'",
+      "Legal notice generated with [BLANK] everywhere making it useless"
+    ],
+    "suggested_fixes": [
+      "Document must use known info and mark unknowns as [BLANK] — not refuse",
+      "Next steps must guide: 'Get factory owner's name from local records / Labour Inspector visit'",
+      "Mention: Unregistered employers still liable under labour law",
+      "Suggest: File complaint with Labour Inspector without needing employer's full details"
+    ],
+    "validation_rules": {
+      "must_not_refuse_due_to_missing_employer_name": true,
+      "next_steps_must_include_labour_inspector": true,
+      "document_blanks_acceptable": true
+    }
+  },
+  {
+    "id": "TC010",
+    "category": "edge_case",
+    "sub_category": "conflicting_input",
+    "name": "User Claims Both Parties Are at Fault",
+    "input": "My landlord is not returning my deposit, but I also left without giving notice. Who is right?",
+    "expected_behavior": "acknowledge_both_sides_in_risk_analysis",
+    "expected_classification": {
+      "primary_category": "rental_dispute",
+      "sub_category": "deposit_refusal"
+    },
+    "expected_risk_output": {
+      "case_strength": "moderate",
+      "key_weaknesses": ["Tenant left without giving notice, landlord may deduct notice period equivalent"],
+      "key_strengths": ["Landlord still cannot withhold full deposit without itemized deductions"]
+    },
+    "failure_scenarios": [
+      "System generates a one-sided legal notice without acknowledging tenant's fault",
+      "Risk analysis only lists strengths and ignores weakness",
+      "System tells user they have no case (overly pessimistic)"
+    ],
+    "suggested_fixes": [
+      "Risk prompt must extract both-sided facts and reflect them honestly",
+      "Legal notice should acknowledge notice period issue but still demand proportional refund",
+      "Explain: landlord must provide itemized deduction list; cannot pocket full deposit"
+    ],
+    "validation_rules": {
+      "risk_must_list_weaknesses": true,
+      "document_must_not_be_one_sided": true,
+      "must_not_say_no_case": true
+    }
+  }
+]

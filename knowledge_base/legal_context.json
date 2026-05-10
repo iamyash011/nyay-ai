@@ -1,0 +1,75 @@
+{
+  "classification_tree": {
+    "employment_dispute": ["salary_withholding", "wrongful_termination", "pf_esi_not_deposited", "workplace_harassment", "gratuity_not_paid", "contract_labour_issues"],
+    "rental_dispute": ["deposit_refusal", "illegal_eviction", "rent_agreement_dispute", "maintenance_neglect", "subletting_dispute"],
+    "cyber_fraud": ["upi_fraud", "online_shopping_fraud", "loan_app_harassment", "identity_theft", "phishing", "investment_scam"],
+    "consumer_complaint": ["defective_product", "service_deficiency", "insurance_claim_rejection", "education_fee_refund", "telecom_complaint", "builder_rera"],
+    "criminal_complaint": ["cheque_bounce", "money_lending_recovery", "theft", "assault", "defamation"],
+    "family_law": ["domestic_violence", "maintenance", "divorce", "child_custody", "property_partition"],
+    "police_complaint": ["stalking_harassment", "noise_pollution", "neighbour_dispute", "animal_cruelty"],
+    "property_dispute": ["property_fraud", "encroachment", "partition_suit", "inheritance"],
+    "banking_fraud": ["unauthorized_transaction", "loan_mis-selling", "fixed_deposit_fraud"]
+  },
+
+  "urgency_matrix": {
+    "critical": {
+      "description": "Immediate action required — within 24–72 hours",
+      "scenarios": ["illegal_eviction", "domestic_violence", "upi_fraud", "unauthorized_transaction", "stalking_harassment", "loan_app_harassment", "property_fraud"],
+      "first_step": "Call helpline or police immediately, then document"
+    },
+    "high": {
+      "description": "Action required within 7–15 days",
+      "scenarios": ["salary_withholding", "wrongful_termination", "cheque_bounce", "insurance_claim_rejection", "builder_rera"],
+      "first_step": "Send legal notice within 15 days"
+    },
+    "medium": {
+      "description": "Action within 30–60 days",
+      "scenarios": ["deposit_refusal", "defective_product", "pf_esi_not_deposited", "education_fee_refund", "money_lending_recovery"],
+      "first_step": "Document everything, send legal notice"
+    },
+    "low": {
+      "description": "No immediate deadline, proceed methodically",
+      "scenarios": ["rent_agreement_dispute", "noise_pollution", "neighbour_dispute"],
+      "first_step": "Written complaint to relevant authority"
+    }
+  },
+
+  "limitation_periods": {
+    "note": "Limitation Act 1963 — suit must be filed within these periods or loses right",
+    "periods": [
+      {"scenario": "Cheque bounce (NI Act 138 complaint)", "period": "30 days from notice expiry", "critical": true},
+      {"scenario": "Consumer complaint (DCDRC)", "period": "2 years from date of cause of action", "critical": false},
+      {"scenario": "Civil money recovery suit", "period": "3 years from due date", "critical": false},
+      {"scenario": "Service conditions disputes (Labour)", "period": "3 years", "critical": false},
+      {"scenario": "Property suits (based on possession)", "period": "12 years", "critical": false},
+      {"scenario": "Cyber crime FIR", "period": "No strict limit but report immediately", "critical": true},
+      {"scenario": "POSH complaint to ICC", "period": "3 months from incident (extendable by 3 more)", "critical": true},
+      {"scenario": "RERA complaint", "period": "Varies by state; generally no strict bar", "critical": false}
+    ]
+  },
+
+  "helplines": [
+    {"name": "Cyber Crime Helpline", "number": "1930", "available": "24x7"},
+    {"name": "National Consumer Helpline", "number": "1915", "available": "9am–5pm weekdays"},
+    {"name": "Women Helpline (National)", "number": "181", "available": "24x7"},
+    {"name": "Police Emergency", "number": "100", "available": "24x7"},
+    {"name": "Labour Helpline", "number": "14434", "available": "Business hours"},
+    {"name": "NALSA Legal Aid", "number": "15100", "available": "Business hours"},
+    {"name": "RBI Ombudsman", "number": "14448", "available": "Business hours"},
+    {"name": "Child Helpline", "number": "1098", "available": "24x7"},
+    {"name": "Senior Citizen Helpline", "number": "14567", "available": "Business hours"}
+  ],
+
+  "key_portals": [
+    {"name": "Cyber Crime Reporting", "url": "https://cybercrime.gov.in"},
+    {"name": "E-Daakhil (Consumer Forum Online Filing)", "url": "https://edaakhil.nic.in"},
+    {"name": "Consumer Helpline", "url": "https://consumerhelpline.gov.in"},
+    {"name": "EPFO Grievance", "url": "https://epfigms.gov.in"},
+    {"name": "Shram Suvidha (Labour)", "url": "https://shramsuvidha.gov.in"},
+    {"name": "RBI Banking Ombudsman", "url": "https://cms.rbi.org.in"},
+    {"name": "IRDAI Bima Bharosa", "url": "https://bimabharosa.irdai.gov.in"},
+    {"name": "NALSA Legal Aid", "url": "https://nalsa.gov.in"},
+    {"name": "eCourts Case Status", "url": "https://services.ecourts.gov.in"},
+    {"name": "RERA (National)", "url": "https://rera.mohua.gov.in"}
+  ]
+}

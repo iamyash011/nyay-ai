@@ -1,0 +1,203 @@
+[
+  {
+    "id": "SC001",
+    "category": "employment_dispute",
+    "sub_category": "salary_withholding",
+    "title": "Employer Not Paying Salary",
+    "description": "Employee has not received salary for one or more months despite working. Employer may cite cash flow issues or may ask employee to resign first.",
+    "typical_solution": "Send legal notice demanding dues. File complaint with Labour Commissioner. Approach Labour Court under Payment of Wages Act.",
+    "document_types": ["legal_notice", "labour_court_application"],
+    "required_inputs": {
+      "legal_notice": ["employer_name", "employer_address", "employee_name", "designation", "joining_date", "salary_amount", "months_unpaid", "last_paid_date", "prior_communication_proof"],
+      "labour_court_application": ["all_above", "form_type_I", "bank_account_details", "witness_details"]
+    },
+    "applicable_laws": [
+      "Payment of Wages Act 1936, Section 3 (Responsibility for payment)",
+      "Payment of Wages Act 1936, Section 15 (Claims arising out of deductions)",
+      "Industrial Disputes Act 1947, Section 33C (Recovery of money)"
+    ],
+    "legal_process": "Issue legal notice → Labour Commissioner mediation → Labour Court application → Execution of decree",
+    "urgency": "high",
+    "typical_timeline": "1–4 months"
+  },
+  {
+    "id": "SC002",
+    "category": "employment_dispute",
+    "sub_category": "wrongful_termination",
+    "title": "Sudden Termination Without Notice or Dues",
+    "description": "Employee terminated without notice period, full and final settlement not paid, or terminated without following due process.",
+    "typical_solution": "Send legal notice for dues. File complaint with Labour Commissioner. If over 100 employees, retrenchment without permission is illegal.",
+    "document_types": ["legal_notice", "labour_court_application"],
+    "required_inputs": {
+      "legal_notice": ["employer_name", "employer_address", "employee_name", "designation", "joining_date", "termination_date", "termination_letter_copy", "notice_period_entitlement", "pending_dues_breakdown"]
+    },
+    "applicable_laws": [
+      "Industrial Disputes Act 1947, Section 25F (Conditions for retrenchment)",
+      "Industrial Disputes Act 1947, Section 25G (Procedure for retrenchment)",
+      "Payment of Gratuity Act 1972 (if 5+ years of service)"
+    ],
+    "legal_process": "Legal notice → Labour Commissioner → Industrial Tribunal → Civil Court for recovery",
+    "urgency": "high",
+    "typical_timeline": "3–12 months"
+  },
+  {
+    "id": "SC003",
+    "category": "employment_dispute",
+    "sub_category": "pf_esi_not_deposited",
+    "title": "Employer Not Depositing PF/ESI",
+    "description": "Employer deducting PF/ESI from salary but not depositing it with EPFO/ESIC, or not enrolling employees at all.",
+    "typical_solution": "File complaint with EPFO Regional Commissioner. File online complaint on EPFO grievance portal. Criminal prosecution possible.",
+    "document_types": ["complaint_letter"],
+    "required_inputs": {
+      "complaint_letter": ["employer_name", "employer_address", "establishment_code", "employee_uan", "months_not_deposited", "salary_slips_showing_deduction"]
+    },
+    "applicable_laws": [
+      "Employees Provident Funds Act 1952, Section 14 (Penalties)",
+      "Employees State Insurance Act 1948, Section 85 (Penalties)"
+    ],
+    "legal_process": "Complaint to EPFO/ESIC → Inquiry → Recovery proceeding → Criminal prosecution",
+    "urgency": "medium",
+    "typical_timeline": "1–6 months"
+  },
+  {
+    "id": "SC004",
+    "category": "rental_dispute",
+    "sub_category": "deposit_refusal",
+    "title": "Landlord Refusing to Return Security Deposit",
+    "description": "Tenant vacated the property but landlord is refusing to return security deposit, citing false damage claims or no reason.",
+    "typical_solution": "Send legal notice. File case in Rent Control Court or Small Causes Court. Consumer forum if residential.",
+    "document_types": ["legal_notice", "consumer_complaint"],
+    "required_inputs": {
+      "legal_notice": ["landlord_name", "landlord_address", "tenant_name", "property_address", "tenancy_start_date", "vacating_date", "deposit_amount", "rent_agreement_copy", "vacating_notice_proof", "property_condition_photos"]
+    },
+    "applicable_laws": [
+      "Transfer of Property Act 1882, Section 108",
+      "State Rent Control Acts (varies by state)",
+      "Contract Act 1872, Section 74 (Compensation for breach)"
+    ],
+    "legal_process": "Legal notice (15 days) → Rent Controller / Civil Court → Decree → Recovery",
+    "urgency": "medium",
+    "typical_timeline": "3–12 months"
+  },
+  {
+    "id": "SC005",
+    "category": "rental_dispute",
+    "sub_category": "illegal_eviction",
+    "title": "Landlord Forcibly Evicting Tenant",
+    "description": "Landlord changing locks, removing belongings, cutting utilities, or threatening tenant without court order.",
+    "typical_solution": "File police complaint immediately. File injunction petition in civil court. Illegal eviction is cognizable offence.",
+    "document_types": ["police_complaint", "legal_notice"],
+    "required_inputs": {
+      "police_complaint": ["tenant_name", "landlord_name", "property_address", "incident_date", "description_of_eviction", "witnesses", "photos_or_videos", "rent_agreement_copy"]
+    },
+    "applicable_laws": [
+      "IPC Section 441 (Criminal trespass)",
+      "IPC Section 503 (Criminal intimidation)",
+      "State Rent Control Acts — Protection from eviction without court order"
+    ],
+    "legal_process": "Police complaint → Injunction from Civil Court → Landlord forced to restore possession → Damages",
+    "urgency": "critical",
+    "typical_timeline": "Immediate police action; court injunction within days"
+  },
+  {
+    "id": "SC006",
+    "category": "rental_dispute",
+    "sub_category": "rent_agreement_dispute",
+    "title": "No Written Rent Agreement / Verbal Dispute",
+    "description": "No formal agreement exists, landlord claims different rent amount, or tenant disputes terms not in writing.",
+    "typical_solution": "Document all payments (receipts, bank transfers). File affidavit of facts. Approach Rent Control Court.",
+    "document_types": ["affidavit", "legal_notice"],
+    "required_inputs": {
+      "affidavit": ["tenant_name", "landlord_name", "property_address", "verbal_terms_description", "payment_history", "witness_names", "possession_date"]
+    },
+    "applicable_laws": [
+      "Indian Evidence Act 1872, Section 92 (Parol evidence rule)",
+      "State Rent Control Acts",
+      "Registration Act 1908 (rent agreements > 11 months must be registered)"
+    ],
+    "legal_process": "Affidavit of terms → Rent Controller evidence hearing → Order",
+    "urgency": "medium",
+    "typical_timeline": "3–9 months"
+  },
+  {
+    "id": "SC007",
+    "category": "cyber_fraud",
+    "sub_category": "upi_fraud",
+    "title": "UPI / Bank Transfer Fraud",
+    "description": "Money transferred via UPI to fraudster posing as bank official, buyer, seller, or friend in emergency. Victim tricked into sharing OTP or making transfer.",
+    "typical_solution": "Immediately call 1930 (Cyber Crime Helpline). File complaint on cybercrime.gov.in. File FIR at local police station. Notify bank to freeze fraudster account.",
+    "document_types": ["fir_draft", "cyber_complaint"],
+    "required_inputs": {
+      "fir_draft": ["victim_name", "victim_address", "incident_date", "fraud_amount", "fraudster_upi_id_or_phone", "transaction_ids", "bank_name", "screenshot_of_transaction", "how_fraud_happened", "any_communication_with_fraudster"]
+    },
+    "applicable_laws": [
+      "IT Act 2000, Section 66C (Identity theft)",
+      "IT Act 2000, Section 66D (Cheating by personation using computer)",
+      "IPC Section 420 (Cheating)",
+      "IPC Section 406 (Criminal breach of trust)"
+    ],
+    "legal_process": "Call 1930 within 24hrs → File cybercrime.gov.in complaint → FIR at police → Bank fraud report → Track via NCRP portal",
+    "urgency": "critical",
+    "typical_timeline": "Recovery possible if reported within 24 hours"
+  },
+  {
+    "id": "SC008",
+    "category": "cyber_fraud",
+    "sub_category": "online_shopping_fraud",
+    "title": "Online Shopping Scam / Fake Seller",
+    "description": "Customer paid for goods on fake website or social media seller. Product never delivered or counterfeit delivered.",
+    "typical_solution": "File consumer complaint on NCH (1915). File cybercrime complaint. Chargeback with bank/card company.",
+    "document_types": ["consumer_complaint", "cyber_complaint"],
+    "required_inputs": {
+      "consumer_complaint": ["victim_name", "victim_address", "seller_name", "website_url", "order_id", "payment_amount", "payment_method", "payment_date", "promised_delivery_date", "communication_with_seller", "screenshots"]
+    },
+    "applicable_laws": [
+      "Consumer Protection Act 2019, Section 2(7) (Deficiency of service)",
+      "IT Act 2000, Section 66D",
+      "IPC Section 420 (Cheating)"
+    ],
+    "legal_process": "NCH complaint (1915) → E-commerce platform escalation → DCDRC complaint → Police complaint",
+    "urgency": "high",
+    "typical_timeline": "Consumer forum: 3–6 months"
+  },
+  {
+    "id": "SC009",
+    "category": "consumer_complaint",
+    "sub_category": "defective_product",
+    "title": "Defective Product / Appliance Not Working",
+    "description": "Consumer purchased product that is defective from day one, or stopped working within warranty period. Brand/seller refusing repair, replacement, or refund.",
+    "typical_solution": "Send legal notice to seller and manufacturer. File complaint at DCDRC (District Consumer Disputes Redressal Commission).",
+    "document_types": ["legal_notice", "consumer_complaint"],
+    "required_inputs": {
+      "consumer_complaint": ["complainant_name", "complainant_address", "seller_name", "seller_address", "product_name", "model_number", "purchase_date", "purchase_invoice", "defect_description", "warranty_card", "complaint_to_company_history", "relief_sought"]
+    },
+    "applicable_laws": [
+      "Consumer Protection Act 2019, Section 2(10) (Defect in goods)",
+      "Consumer Protection Act 2019, Section 35 (Complaint to District Commission)",
+      "Sale of Goods Act 1930, Section 16 (Implied conditions as to quality)"
+    ],
+    "legal_process": "Company complaint → Legal notice → DCDRC filing → Hearing → Order within 150 days",
+    "urgency": "medium",
+    "typical_timeline": "3–6 months at consumer forum"
+  },
+  {
+    "id": "SC010",
+    "category": "consumer_complaint",
+    "sub_category": "service_deficiency",
+    "title": "Builder / Developer Not Delivering Flat",
+    "description": "Homebuyer paid full or partial amount, builder delayed possession beyond promised date, or delivered substandard construction.",
+    "typical_solution": "File complaint with RERA of respective state. Claim interest on delay and compensation. Consumer forum also has jurisdiction.",
+    "document_types": ["rera_complaint", "legal_notice", "consumer_complaint"],
+    "required_inputs": {
+      "rera_complaint": ["complainant_name", "project_name", "rera_registration_number", "builder_name", "agreement_for_sale_copy", "payment_receipts", "promised_possession_date", "actual_status", "defects_if_any", "relief_sought"]
+    },
+    "applicable_laws": [
+      "Real Estate (Regulation and Development) Act 2016 (RERA), Section 18 (Return of amount with interest)",
+      "Consumer Protection Act 2019 (Alternative forum)",
+      "Specific Relief Act 1963, Section 10 (Specific performance)"
+    ],
+    "legal_process": "RERA complaint → Builder's reply → Adjudicating Officer order → Recovery",
+    "urgency": "high",
+    "typical_timeline": "6–18 months"
+  }
+]

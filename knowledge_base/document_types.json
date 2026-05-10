@@ -1,0 +1,114 @@
+{
+  "document_types": {
+    "legal_notice": {
+      "description": "A formal pre-litigation written demand sent to the opposite party before filing a case.",
+      "mandatory_sections": ["date", "sender_details", "recipient_details", "subject", "facts", "legal_basis", "demand", "time_limit", "consequence", "advocate_signature"],
+      "send_via": "Registered Post with Acknowledgement Due (RPAD) + email",
+      "response_time": "15–30 days (specified in notice)",
+      "used_for": ["SC001", "SC002", "SC004", "SC006", "SC009", "SC010", "SC011", "SC016", "SC019", "SC020"]
+    },
+    "fir_draft": {
+      "description": "First Information Report drafted for lodging with police. FIR initiates criminal proceedings.",
+      "mandatory_sections": ["police_station_name", "date_time", "complainant_details", "accused_details", "place_of_incident", "date_of_incident", "detailed_account", "sections_of_law", "list_of_witnesses", "list_of_documents", "signature"],
+      "send_via": "In person at police station; online on state police portal",
+      "response_time": "Police must register FIR immediately for cognizable offences",
+      "used_for": ["SC005", "SC007", "SC012", "SC014", "SC015", "SC017", "SC018"]
+    },
+    "consumer_complaint": {
+      "description": "Formal complaint to District Consumer Disputes Redressal Commission (DCDRC) for goods or service deficiency.",
+      "mandatory_sections": ["complainant_details", "opposite_party_details", "facts_of_complaint", "documents_relied_upon", "reliefs_sought", "affidavit", "court_fee"],
+      "send_via": "In person at DCDRC / e-daakhil.gov.in portal",
+      "response_time": "Opposite party gets 30 days to reply; order within 150 days",
+      "used_for": ["SC004", "SC008", "SC009", "SC010", "SC016", "SC020", "SC021"],
+      "court_fee": "Up to 5L: ₹200 | 5L–10L: ₹400 | 10L–20L: ₹500"
+    },
+    "police_complaint": {
+      "description": "Written complaint to police that may or may not result in FIR. For non-cognizable offences.",
+      "mandatory_sections": ["complainant_details", "accused_details", "incident_description", "relief_requested", "date_signature"],
+      "send_via": "In person at police station or online state portal",
+      "used_for": ["SC005", "SC013", "SC014", "SC015"]
+    },
+    "affidavit": {
+      "description": "A sworn statement of facts made before a Magistrate or Notary. Used as evidence in court or for official purposes.",
+      "mandatory_sections": ["deponent_name", "deponent_address", "statement_of_facts", "verification_clause", "notary_stamp"],
+      "send_via": "Notarized on stamp paper (₹10–₹100 depending on state)",
+      "used_for": ["SC006", "SC012", "SC013"]
+    },
+    "cyber_complaint": {
+      "description": "Online complaint at cybercrime.gov.in or 1930 helpline for internet/digital fraud.",
+      "mandatory_sections": ["victim_details", "incident_category", "financial_loss_if_any", "accused_details_if_known", "evidence_description"],
+      "send_via": "cybercrime.gov.in or Cyber Crime police station",
+      "used_for": ["SC007", "SC008", "SC014", "SC015", "SC021"]
+    },
+    "labour_court_application": {
+      "description": "Formal application to Labour Court or Payment of Wages Authority for recovery of wages.",
+      "mandatory_sections": ["applicant_details", "employer_details", "employment_period", "wages_owed_calculation", "documents_attached", "relief_sought"],
+      "send_via": "Labour Court in district of workplace",
+      "used_for": ["SC001", "SC002", "SC003"]
+    }
+  },
+
+  "category_to_authority": {
+    "employment_dispute": {
+      "primary": "Labour Commissioner (District)",
+      "secondary": "Labour Court / Industrial Tribunal",
+      "helpline": "14434 (Labour Helpline)",
+      "portal": "https://shramsuvidha.gov.in"
+    },
+    "rental_dispute": {
+      "primary": "Rent Control Court (District)",
+      "secondary": "Civil Court",
+      "helpline": "State-specific",
+      "portal": "State Revenue Department portal"
+    },
+    "cyber_fraud": {
+      "primary": "Cyber Crime Police Station",
+      "secondary": "National Cyber Crime Reporting Portal",
+      "helpline": "1930",
+      "portal": "https://cybercrime.gov.in"
+    },
+    "consumer_complaint": {
+      "primary": "District Consumer Disputes Redressal Commission (DCDRC)",
+      "secondary": "State Commission / National Commission (NCDRC)",
+      "helpline": "1915 (National Consumer Helpline)",
+      "portal": "https://consumerhelpline.gov.in | https://edaakhil.nic.in"
+    },
+    "banking_fraud": {
+      "primary": "Bank's Nodal Officer",
+      "secondary": "RBI Banking Ombudsman",
+      "helpline": "14448 (RBI Ombudsman)",
+      "portal": "https://cms.rbi.org.in"
+    },
+    "property_dispute": {
+      "primary": "Civil Court",
+      "secondary": "Sub-Registrar / Collector",
+      "helpline": "State-specific",
+      "portal": "State Revenue / Registration portal"
+    },
+    "family_law": {
+      "primary": "Family Court / Magistrate Court",
+      "secondary": "Protection Officer (DV cases)",
+      "helpline": "181 (Women Helpline) | 1091 (Police Women's cell)",
+      "portal": "State Women and Child Development"
+    },
+    "criminal_complaint": {
+      "primary": "Local Police Station",
+      "secondary": "Magistrate Court",
+      "helpline": "100 (Police)",
+      "portal": "State Police portal"
+    }
+  },
+
+  "free_legal_aid": {
+    "national": {
+      "authority": "NALSA — National Legal Services Authority",
+      "portal": "https://nalsa.gov.in",
+      "helpline": "15100",
+      "eligibility": "Women, SC/ST, children, persons with disability, victims of trafficking, persons with annual income below ₹3 lakh"
+    },
+    "state": {
+      "authority": "SLSA — State Legal Services Authority (each state has one)",
+      "note": "Visit your District Legal Services Authority (DLSA) at your district court complex"
+    }
+  }
+}

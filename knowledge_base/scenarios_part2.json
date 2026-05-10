@@ -1,0 +1,230 @@
+[
+  {
+    "id": "SC011",
+    "category": "criminal_complaint",
+    "sub_category": "cheque_bounce",
+    "title": "Cheque Bounce / Dishonoured Cheque",
+    "description": "A cheque issued by a debtor has bounced due to insufficient funds or stopped payment. This is both a civil and criminal matter in India.",
+    "typical_solution": "Send legal demand notice within 30 days of bounce. If no payment in 15 days, file criminal complaint under NI Act Section 138.",
+    "document_types": ["legal_notice", "criminal_complaint_magistrate"],
+    "required_inputs": {
+      "legal_notice": ["creditor_name", "creditor_address", "debtor_name", "debtor_address", "cheque_number", "cheque_date", "cheque_amount", "bank_name", "date_of_presentation", "date_of_bounce", "bank_return_memo_copy", "underlying_transaction_details"]
+    },
+    "applicable_laws": [
+      "Negotiable Instruments Act 1881, Section 138 (Dishonour of cheque — criminal)",
+      "Negotiable Instruments Act 1881, Section 142 (Cognizance of offences)",
+      "CrPC Section 200 (Complaint before Magistrate)"
+    ],
+    "legal_process": "Bounce → Bank memo → Legal notice within 30 days → Wait 15 days → Magistrate complaint → Trial → Max 2 years imprisonment + 2x fine",
+    "urgency": "high",
+    "typical_timeline": "Strict: Notice must go within 30 days of bounce; complaint within 30 days of notice expiry"
+  },
+  {
+    "id": "SC012",
+    "category": "family_law",
+    "sub_category": "domestic_violence",
+    "title": "Domestic Violence / Abuse by Spouse or Family",
+    "description": "Woman facing physical, emotional, sexual, or economic abuse from husband or in-laws. May need immediate protection or relief.",
+    "typical_solution": "File complaint with Protection Officer (every district has one). Approach Magistrate under DV Act. File FIR for physical violence under IPC.",
+    "document_types": ["dv_application", "fir_draft", "police_complaint"],
+    "required_inputs": {
+      "dv_application": ["victim_name", "victim_address", "respondent_name", "respondent_address", "relationship", "nature_of_violence", "dates_of_incidents", "witnesses", "children_details_if_any", "relief_sought", "shared_household_details"]
+    },
+    "applicable_laws": [
+      "Protection of Women from Domestic Violence Act 2005, Section 12 (Application to Magistrate)",
+      "Protection of Women from Domestic Violence Act 2005, Section 18 (Protection orders)",
+      "IPC Section 498A (Husband or relative subjecting woman to cruelty)",
+      "IPC Section 323/324/325 (Hurt)"
+    ],
+    "legal_process": "Protection Officer → IR (Incident Report) → Magistrate application → Hearing → Protection/Residence/Maintenance order",
+    "urgency": "critical",
+    "typical_timeline": "Protection order: within 3 days in urgent cases"
+  },
+  {
+    "id": "SC013",
+    "category": "family_law",
+    "sub_category": "maintenance",
+    "title": "Wife / Child Maintenance Not Paid",
+    "description": "Separated or divorced woman or minor child not receiving court-ordered or agreed maintenance/alimony from husband/father.",
+    "typical_solution": "File application under Section 125 CrPC in Magistrate court. File execution petition if already ordered but not paid.",
+    "document_types": ["maintenance_application"],
+    "required_inputs": {
+      "maintenance_application": ["applicant_name", "applicant_address", "respondent_name", "respondent_address", "marriage_certificate", "children_birth_certificates", "income_proof_of_respondent", "applicant_expenses_details", "separation_date", "previous_court_orders_if_any"]
+    },
+    "applicable_laws": [
+      "CrPC Section 125 (Order for maintenance of wives, children and parents)",
+      "Hindu Marriage Act 1955, Section 24 (Maintenance pendente lite)",
+      "Hindu Adoption and Maintenance Act 1956",
+      "Muslim Women (Protection of Rights on Divorce) Act 1986"
+    ],
+    "legal_process": "Application to Magistrate → Ex-parte interim maintenance possible → Full hearing → Order → Execution if defaulted",
+    "urgency": "high",
+    "typical_timeline": "Interim order possible in 1–3 months; final order 6–18 months"
+  },
+  {
+    "id": "SC014",
+    "category": "police_complaint",
+    "sub_category": "stalking_harassment",
+    "title": "Stalking or Online Harassment",
+    "description": "Person being followed, repeatedly contacted against their will, or harassed online (social media, WhatsApp, email) by known or unknown person.",
+    "typical_solution": "File FIR at local police station or cyber cell. Apply for restraining order. Document all incidents with screenshots.",
+    "document_types": ["fir_draft", "police_complaint"],
+    "required_inputs": {
+      "fir_draft": ["victim_name", "victim_address", "accused_name_or_description", "incidents_with_dates", "mode_of_stalking", "screenshots_or_evidence", "witnesses", "prior_complaints_if_any", "relationship_with_accused"]
+    },
+    "applicable_laws": [
+      "IPC Section 354D (Stalking — added by Criminal Law Amendment 2013)",
+      "IT Act 2000, Section 67 (Obscene material online)",
+      "IT Act 2000, Section 66A — Note: Struck down but Section 66C/D applicable",
+      "BNS 2023, Section 78 (Stalking) — for offences after July 2024"
+    ],
+    "legal_process": "FIR → Cyber Cell investigation → Arrest → Trial → Up to 3 years imprisonment for first offence",
+    "urgency": "critical",
+    "typical_timeline": "FIR must be filed immediately; bail-able for first offence"
+  },
+  {
+    "id": "SC015",
+    "category": "cyber_fraud",
+    "sub_category": "loan_app_harassment",
+    "title": "Illegal Loan App Harassment",
+    "description": "Victim took loan from unlicensed app. App recovery agents calling contacts, sending morphed photos, threatening arrest, demanding excessive interest.",
+    "typical_solution": "File cybercrime complaint. Complain to RBI Ombudsman. File FIR for extortion and defamation. Block app and delete.",
+    "document_types": ["cyber_complaint", "fir_draft", "rbi_complaint"],
+    "required_inputs": {
+      "cyber_complaint": ["victim_name", "victim_address", "app_name", "loan_amount", "amount_repaid", "harassment_description", "screenshots_of_messages", "contacts_harassed", "phone_numbers_of_agents"]
+    },
+    "applicable_laws": [
+      "IT Act 2000, Section 66C (Identity theft of contacts data)",
+      "IT Act 2000, Section 66E (Privacy violation — sharing morphed images)",
+      "IPC Section 384 (Extortion)",
+      "IPC Section 499/500 (Defamation)",
+      "RBI Guidelines on Digital Lending (2022)"
+    ],
+    "legal_process": "Cybercrime portal complaint → RBI Ombudsman → FIR at cyber cell → Freeze fraudster accounts",
+    "urgency": "critical",
+    "typical_timeline": "Report immediately; RBI Ombudsman responds in 30 days"
+  },
+  {
+    "id": "SC016",
+    "category": "consumer_complaint",
+    "sub_category": "insurance_claim_rejection",
+    "title": "Insurance Claim Wrongly Rejected",
+    "description": "Insurance company rejecting health, motor, or life insurance claim without valid reason or citing exclusions that were never disclosed at time of purchase.",
+    "typical_solution": "Send legal notice to insurer. File complaint with IRDAI Bima Bharosa portal. Approach Insurance Ombudsman. Consumer Forum also available.",
+    "document_types": ["legal_notice", "ombudsman_complaint", "consumer_complaint"],
+    "required_inputs": {
+      "ombudsman_complaint": ["policyholder_name", "policy_number", "insurer_name", "claim_number", "date_of_claim", "rejection_letter_copy", "rejection_reason_given", "policy_document", "medical_bills_or_reports", "relief_sought"]
+    },
+    "applicable_laws": [
+      "Insurance Act 1938, Section 45 (No repudiation after 3 years)",
+      "Consumer Protection Act 2019 (Deficiency of service)",
+      "IRDAI (Protection of Policyholders Interests) Regulations 2017"
+    ],
+    "legal_process": "Complaint to insurer → Legal notice → IRDAI Bima Bharosa portal → Insurance Ombudsman → Consumer Forum",
+    "urgency": "high",
+    "typical_timeline": "Ombudsman: 30–90 days; Consumer Forum: 3–6 months"
+  },
+  {
+    "id": "SC017",
+    "category": "property_dispute",
+    "sub_category": "property_fraud",
+    "title": "Property Document Fraud / Benami Transaction",
+    "description": "Someone forged property documents, sold property without owner's knowledge, or property held in benami name causing disputes.",
+    "typical_solution": "Lodge FIR for document forgery. File complaint with Registrar of Properties. Seek injunction from Civil Court.",
+    "document_types": ["fir_draft", "civil_suit"],
+    "required_inputs": {
+      "fir_draft": ["complainant_name", "property_address", "survey_number", "original_documents_available", "how_fraud_discovered", "accused_name_if_known", "forged_documents_description", "value_of_property"]
+    },
+    "applicable_laws": [
+      "IPC Section 420 (Cheating)",
+      "IPC Section 467 (Forgery of valuable security)",
+      "IPC Section 468 (Forgery for purpose of cheating)",
+      "Benami Transactions (Prohibition) Amendment Act 2016",
+      "Transfer of Property Act 1882"
+    ],
+    "legal_process": "FIR → Investigation → Civil suit for injunction → Declaration of title → Recovery",
+    "urgency": "critical",
+    "typical_timeline": "Civil suits take 2–5 years; criminal cases 1–3 years"
+  },
+  {
+    "id": "SC018",
+    "category": "employment_dispute",
+    "sub_category": "workplace_harassment",
+    "title": "Sexual Harassment at Workplace (POSH)",
+    "description": "Employee facing sexual harassment from colleague or superior. Company may not have Internal Complaints Committee (ICC) or may be suppressing complaint.",
+    "typical_solution": "File complaint with ICC within 3 months. If no ICC, file with Local Complaints Committee (LCC) at District level. File FIR if criminal conduct.",
+    "document_types": ["icc_complaint", "lcc_complaint", "fir_draft"],
+    "required_inputs": {
+      "icc_complaint": ["complainant_name", "designation", "respondent_name", "respondent_designation", "incident_dates", "description_of_harassment", "witnesses", "documents_or_messages", "relief_sought", "company_name", "company_address"]
+    },
+    "applicable_laws": [
+      "Sexual Harassment of Women at Workplace Act 2013 (POSH Act), Section 9 (Complaint)",
+      "POSH Act Section 11 (Inquiry into complaint)",
+      "IPC Section 354A (Sexual harassment)",
+      "IPC Section 354 (Assault on woman)"
+    ],
+    "legal_process": "ICC complaint → Conciliation attempt (optional) → Inquiry → Report to employer → Action within 60 days",
+    "urgency": "critical",
+    "typical_timeline": "ICC must complete inquiry in 90 days"
+  },
+  {
+    "id": "SC019",
+    "category": "criminal_complaint",
+    "sub_category": "money_lending_recovery",
+    "title": "Personal Loan Given to Friend / Relative Not Returned",
+    "description": "Victim lent money to known person on trust. Borrower now denying loan or refusing to repay despite repeated requests.",
+    "typical_solution": "Send legal notice. File civil suit for recovery in appropriate court. If cheque was given and bounced, use NI Act Section 138.",
+    "document_types": ["legal_notice", "civil_recovery_suit"],
+    "required_inputs": {
+      "legal_notice": ["creditor_name", "creditor_address", "debtor_name", "debtor_address", "loan_amount", "loan_date", "repayment_date_agreed", "proof_of_transfer", "any_written_acknowledgement", "interest_if_agreed", "messages_demanding_repayment"]
+    },
+    "applicable_laws": [
+      "Code of Civil Procedure 1908, Order 37 (Summary suit for money)",
+      "Limitation Act 1963, Section 18 (Acknowledgement of debt extends limitation to 3 years)",
+      "Evidence Act 1872, Section 118 (Presumption of consideration in promissory note)"
+    ],
+    "legal_process": "Legal notice → Civil summary suit → Ex-parte decree if no reply → Execution → Recovery",
+    "urgency": "medium",
+    "typical_timeline": "Summary suit: 6–18 months"
+  },
+  {
+    "id": "SC020",
+    "category": "consumer_complaint",
+    "sub_category": "education_fee_refund",
+    "title": "College / Coaching Institute Refusing Fee Refund",
+    "description": "Student cancelled admission or left course but institute refusing to refund fees, citing no-refund policy in violation of UGC/state regulations.",
+    "typical_solution": "Send legal notice citing UGC refund policy. File consumer complaint at DCDRC. File complaint with UGC/state education regulator.",
+    "document_types": ["legal_notice", "consumer_complaint"],
+    "required_inputs": {
+      "consumer_complaint": ["student_name", "parent_guardian_name", "institute_name", "institute_address", "admission_date", "cancellation_date", "fee_paid_amount", "fee_receipts", "cancellation_letter_copy", "institute_refund_refusal_communication", "ugc_guidelines_reference"]
+    },
+    "applicable_laws": [
+      "UGC (Refund of Fees) Guidelines 2018 (Pro-rata refund based on withdrawal date)",
+      "Consumer Protection Act 2019, Section 2(42) (Unfair trade practice — no-refund policy)",
+      "State fee regulation acts (vary by state)"
+    ],
+    "legal_process": "Legal notice → UGC complaint → Consumer Forum → Order for refund + compensation",
+    "urgency": "medium",
+    "typical_timeline": "Consumer forum: 3–6 months"
+  },
+  {
+    "id": "SC021",
+    "category": "banking_fraud",
+    "sub_category": "unauthorized_transaction",
+    "title": "Unauthorized Bank Transaction / Card Fraud",
+    "description": "Money debited from bank account or credit card without customer's knowledge. May be card skimming, phishing, or insider fraud.",
+    "typical_solution": "Immediately block card. Report to bank within 3 days for zero liability. File complaint on cybercrime.gov.in and with banking ombudsman.",
+    "document_types": ["bank_complaint", "cyber_complaint", "rbi_ombudsman_complaint"],
+    "required_inputs": {
+      "bank_complaint": ["account_holder_name", "account_number", "transaction_amount", "transaction_date", "transaction_id", "bank_name", "branch", "how_discovered", "otp_shared_yes_no", "card_in_possession"]
+    },
+    "applicable_laws": [
+      "RBI Circular on Customer Protection in Unauthorised Electronic Banking Transactions 2017",
+      "IT Act 2000, Section 43 (Penalty for damage to computer system)",
+      "IT Act 2000, Section 66C (Identity theft)"
+    ],
+    "legal_process": "Bank complaint (written) → Cybercrime portal → RBI Banking Ombudsman if bank rejects → Consumer Forum",
+    "urgency": "critical",
+    "typical_timeline": "Zero liability if reported within 3 days; bank must resolve in 90 days"
+  }
+]
